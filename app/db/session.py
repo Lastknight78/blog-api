@@ -8,4 +8,4 @@ if settings.USE_SQLITE:
         pool_pre_ping=True,
     )
 else:
-    engine = create_engine(url=settings.POSGRES_URI, pool_pre_ping=True)
+    engine = create_engine(url=settings.POSTGRES_URI, pool_pre_ping=True)
