@@ -9,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      PROJECT_NAME: Blog-API
+      PROJECT_VERSION: "0.0.1"
     steps:
       - uses: actions/checkout@v4
       

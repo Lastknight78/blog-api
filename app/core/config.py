@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     BASE_FILE_PATH: str = "uploads"
 
     USE_SQLITE: bool = False
-    SQLITE_URI: Optional[str]
+    SQLITE_URI: Optional[str] = None
 
     POSTGRES_USER: Optional[str] = None
     POSTGRES_PASSWORD: Optional[str] = None
