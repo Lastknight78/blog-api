@@ -18,10 +18,10 @@ class Settings(BaseSettings):
     USE_SQLITE: bool = False
     SQLITE_URI: Optional[str] = None
 
-    POSTGRES_USER: Optional[str] = None
-    POSTGRES_PASSWORD: Optional[str] = None
-    POSTGRES_SERVER: Optional[str] = None
-    POSTGRES_DB: Optional[str] = None
+    POSTGRES_USER: str = "localhost"
+    POSTGRES_PASSWORD: str = "1234"
+    POSTGRES_SERVER: str = "localhost"
+    POSTGRES_DB: str = "localhost"
 
     POSTGRES_URI: Optional[PostgresDsn] = None
 
