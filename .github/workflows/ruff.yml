@@ -7,12 +7,10 @@ on:
     branches: [main]
 
 jobs:
-  ruff:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Run Ruff
-        uses: chartboost/ruff-action@v1
+      - uses: chartboost/ruff-action@v1
         with:
-          args: check -- --format=github  # Note the double dash
+          args: check . --output-format=github  # Correct argument format
