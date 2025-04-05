@@ -1,7 +1,7 @@
 from typing import List, Optional
 from pydantic_settings import BaseSettings
 from pydantic import AnyHttpUrl
-from pydantic import field_validator, PostgresDsn, ValidationInfo
+from pydantic import field_validator, ValidationInfo
 
 
 class Settings(BaseSettings):
@@ -16,14 +16,14 @@ class Settings(BaseSettings):
     BASE_FILE_PATH: str = "uploads"
 
     USE_SQLITE: bool = False
-    SQLITE_URI: Optional[str]
+    SQLITE_URI: Optional[str] = None
 
-    POSTGRES_USER: Optional[str] = None
-    POSTGRES_PASSWORD: Optional[str] = None
-    POSTGRES_SERVER: Optional[str] = None
-    POSTGRES_DB: Optional[str] = None
+    POSTGRES_USER: str = "localhost"
+    POSTGRES_PASSWORD: str = "1234"
+    POSTGRES_SERVER: str = "localhost"
+    POSTGRES_DB: str = "localhost"
 
-    POSTGRES_URI: Optional[PostgresDsn] = None
+    POSTGRES_URI: Optional[str] = None
 
     @field_validator("POSTGRES_URI", mode="before")
     @classmethod

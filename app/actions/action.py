@@ -1,4 +1,4 @@
-from typing import Any, Generic, Tuple, TypeVar, Optional, get_args, get_origin
+from typing import Any, Generic, Tuple, Type, TypeVar, Optional, get_args, get_origin
 from pydantic import BaseModel
 from sqlmodel import Session, or_, select
 from sqlalchemy.sql.expression import BinaryExpression
@@ -10,7 +10,7 @@ ModelUpdate = TypeVar("ModelUpdate", bound=BaseModel)
 
 
 class ActionClass(Generic[Model, ModelCreate, ModelUpdate]):
-    _type_args = Optional[Tuple[Model, ModelCreate, ModelUpdate]] = None
+    _type_args: Optional[Tuple[Type[Model], Type[ModelCreate], Type[ModelUpdate]]] = None
 
     @classmethod
     def __init_subclass__(cls):
@@ -28,7 +28,7 @@ class ActionClass(Generic[Model, ModelCreate, ModelUpdate]):
         cls._type_args = args
 
     @classmethod
-    def _get_type_args(cls) -> Tuple[Model, ModelCreate, ModelUpdate]:
+    def _get_type_args(cls) -> Tuple[Type[Model], Type[ModelCreate], Type[ModelUpdate]]:
         if not cls._type_args:
             raise TypeError(
                 f"{cls.__name__} must subclass ActionClass with concrete type parameters like "
@@ -133,3 +133,6 @@ class ActionClass(Generic[Model, ModelCreate, ModelUpdate]):
             session.delete(instance)
             session.commit()
         return instance
+
+    def random(self, **dict):
+        return self._type_args[1](**dict)
