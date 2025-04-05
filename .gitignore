@@ -5,3 +5,5 @@ venv*/
 .env
 .vscode/
 __pycache__/
+database.db
+test.db

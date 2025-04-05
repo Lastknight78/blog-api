@@ -22,5 +22,5 @@ if settings.CORS_ORIGINS:
 
 if settings.STORAGE_TYPE == "file":
     app.mount(
-        settings.BASE_FILE_PATH, StaticFiles(directory=settings.BASE_FILE_PATH), name="storage"
+        settings.BASE_FILE_URL, StaticFiles(directory=settings.BASE_FILE_PATH), name="storage"
     )
