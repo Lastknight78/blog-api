@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     POSTGRES_SERVER: str = "localhost"
     POSTGRES_DB: str = "localhost"
 
-    POSTGRES_URI: Optional[PostgresDsn] = None
+    POSTGRES_URI: Optional[str] = None
 
     @field_validator("POSTGRES_URI", mode="before")
     @classmethod
