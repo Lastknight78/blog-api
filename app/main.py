@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from app.core import settings
+from app.api.api_v1.api_routes import api_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -18,7 +19,7 @@ if settings.CORS_ORIGINS:
         allow_headers=["*"],
     )
 
-# app.include_router()
+app.include_router(router=api_router, prefix=f"{settings.API_V1_STR}")
 
 if settings.STORAGE_TYPE == "file":
     app.mount(

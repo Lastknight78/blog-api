@@ -1,5 +1,6 @@
 from sqlmodel import SQLModel
 from sqlalchemy.engine import Engine
+from app import models  # noqa: F401
 
 
 def init_db(engine: Engine, create_table: bool = False):
