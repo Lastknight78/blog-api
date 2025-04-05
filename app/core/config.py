@@ -1,7 +1,7 @@
 from typing import List, Optional
 from pydantic_settings import BaseSettings
 from pydantic import AnyHttpUrl
-from pydantic import field_validator, PostgresDsn, ValidationInfo
+from pydantic import field_validator, ValidationInfo
 
 
 class Settings(BaseSettings):
