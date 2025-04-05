@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,6 +23,8 @@ if settings.CORS_ORIGINS:
 app.include_router(router=api_router, prefix=f"{settings.API_V1_STR}")
 
 if settings.STORAGE_TYPE == "file":
+    if not os.path.exists(f"./{settings.BASE_FILE_PATH}"):
+        os.mkdir(f"./{settings.BASE_FILE_PATH}")
     app.mount(
         settings.BASE_FILE_URL, StaticFiles(directory=settings.BASE_FILE_PATH), name="storage"
     )
