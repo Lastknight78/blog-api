@@ -13,3 +13,19 @@ def test_open_account(client: TestClient, session: Session):
     content = response.json()
     retrieved_data = aa.get(session, id=content["id"])
     assert content == AccountRead.from_orm_(retrieved_data)
+
+
+def test_open_account_email_exists(client: TestClient, session: Session):
+    account = aa.create(session, data=aa.random())
+    data = aa.random(email=account.email).model_dump()
+    response = client.post(f"{settings.API_V1_STR}/accounts/open", json=data)
+    assert response.status_code == 401
+    assert response.json()["detail"] == "email already exists"
+
+
+def test_open_account_username_exists(client: TestClient, session: Session):
+    account = aa.create(session, data=aa.random())
+    data = aa.random(username=account.username).model_dump()
+    response = client.post(f"{settings.API_V1_STR}/accounts/open", json=data)
+    assert response.status_code == 401
+    assert response.json()["detail"] == "username already exists"

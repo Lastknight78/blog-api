@@ -1,3 +1,4 @@
+import secrets
 from typing import List, Optional
 from pydantic_settings import BaseSettings
 from pydantic import AnyHttpUrl
@@ -8,6 +9,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str
     PROJECT_VERSION: str
     API_V1_STR: str = "/api/v1"
+    SECRET_KEY: str = secrets.token_hex(32)
 
     CORS_ORIGINS: List[AnyHttpUrl] = []
 
