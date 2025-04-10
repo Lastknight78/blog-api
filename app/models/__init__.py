@@ -1,6 +1,6 @@
 from .account import Account, AccountCreate, AccountRead, AccountUpdate
 from .profile import Profile, ProfileCreate, ProfileRead, ProfileUpdate
-
+from .auth import TokenData
 
 __all__ = [
     "Account",
@@ -11,4 +11,5 @@ __all__ = [
     "ProfileCreate",
     "ProfileRead",
     "ProfileUpdate",
+    "TokenData",
 ]
