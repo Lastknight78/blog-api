@@ -26,5 +26,5 @@ def verify_access_token(token: str):
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
     except Exception as e:
         raise HTTPException(status_code=401, detail=str(e), headers={"WWW-Authenticate": "Bearer"})
-    token = TokenData(payload.get("id"))
-    return token
+
+    return TokenData(id=payload.get("id"))

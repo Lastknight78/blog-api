@@ -102,7 +102,7 @@ class ActionClass(Generic[Model, ModelCreate, ModelUpdate]):
 
         session.add(instance)
         session.commit()
-        session.refresh()
+        session.refresh(instance)
 
         return instance
 
