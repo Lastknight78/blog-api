@@ -27,6 +27,7 @@ class AccountBase(ModelBase):
     role: AccountRole = Field(default=AccountRole.user)
     status: AccountStatus = Field(default=AccountStatus.active)
     last_login: Optional[datetime] = Field(nullable=True)
+    # is_delete: Optional[bool] = Field(default=False)
 
 
 class Account(AccountBase, table=True):
@@ -50,6 +51,6 @@ class AccountCreate(SchemaBase):
 
 
 class AccountUpdate(SchemaBase):
-    username: Optional[str]
-    email: Optional[str]
-    password: Optional[str]
+    username: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
