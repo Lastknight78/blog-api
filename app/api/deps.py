@@ -14,6 +14,9 @@ def get_session():
         yield session
 
 
-def get_current_account(session: Session = Depends(get_session), token: str = Depends(oauth2_bearer)):
+def get_current_account(
+    session: Session = Depends(get_session),
+    token: str = Depends(oauth2_bearer),
+):
     account_id = verify_access_token(token).id
     return aa.get(session, id=account_id)
